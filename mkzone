@@ -92,7 +92,7 @@ class Records(object):
     @staticmethod
     def fields_srv(record):
         "format an SRV record"
-        return ['', record['type'],
+        return [record['host'], record['type'],
                 str(record['priority']) + '  ' + str(record['weight']) + '  ' + str(record['port']) + '  ' + record['value']]
 
 def reverse_addr_mask(cidr):
