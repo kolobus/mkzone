@@ -89,6 +89,12 @@ class Records(object):
         return [reverse_addr_host(record['value'], Records.mask),
                 record['type'], record['host']]
 
+    @staticmethod
+    def fields_srv(record):
+        "format an SRV record"
+        return ['', record['type'],
+                str(record['priority']) + '  ' + str(record['weight']) + '  ' + str(record['port']) + '  ' + record['value']]
+
 def reverse_addr_mask(cidr):
     "Return the mask of cidr. IPv6 is nibbles, IPv4 is octets."
     if ':' in cidr:
