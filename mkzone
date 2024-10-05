@@ -90,15 +90,15 @@ class Records(object):
                 record['type'], record['host']]
 
     @staticmethod
+    def fields_txt(record):
+        "Format a TXT record"
+        return [record['host'], record['type'], str(record['value'])]
+
+    @staticmethod
     def fields_srv(record):
         "format an SRV record"
         return [record['host'], record['type'],
                 str(record['priority']) + '  ' + str(record['weight']) + '  ' + str(record['port']) + '  ' + record['value']]
-
-    @staticmethod
-    def fields_txt(record):
-        "Format a TXT record. Same as an A record."
-        return Records.fields_txt(record)
 
 def reverse_addr_mask(cidr):
     "Return the mask of cidr. IPv6 is nibbles, IPv4 is octets."
